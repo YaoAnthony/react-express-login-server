@@ -16,7 +16,6 @@ const ProfileSchema = new Schema({
         plan: { type: String, enum: ['free', 'pro', 'enterprise'], default: 'free' },
         createdAt: { type: Date, default: Date.now }
     }],
-    projects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }]
 });
 
 const Profile = mongoose.model('Profile', ProfileSchema);

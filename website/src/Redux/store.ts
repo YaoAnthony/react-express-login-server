@@ -16,14 +16,10 @@ import {
 import userReducer from "./Features/userSlice";
 import themeReducer from "./Features/themeSlice";
 import profileReducer from "./Features/profileSlice";
-import communityReducer from "./Features/communitySlice";
 
 // RTK Query apis
 import { authApi } from "../api/authApi";
 import { profileApi } from "../api/profileApi";
-import githubProjectReducer from "../Features/GithubScan/slice";
-import { githubApi } from "../Features/GithubScan/services";
-import { communityApi } from "../api/CommunityApi";
 
 // persist config 工厂
 import { makePersistConfig } from "./persist";
@@ -33,14 +29,10 @@ const rootReducer = combineReducers({
     theme: themeReducer,
     user: userReducer,
     profile: profileReducer,
-    community: communityReducer,
-    githubProject: githubProjectReducer,
 
     // RTK Query
     [authApi.reducerPath]: authApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
-    [githubApi.reducerPath]: githubApi.reducer,
-    [communityApi.reducerPath]: communityApi.reducer,
 });
 
 // 2) 用根 reducer 的返回类型，作为 “持久化前的 RootState”
@@ -72,8 +64,6 @@ export const store = configureStore({
         }).concat(
             authApi.middleware,
             profileApi.middleware,
-            githubApi.middleware,
-            communityApi.middleware,
         ),
 });
 

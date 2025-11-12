@@ -4,10 +4,6 @@ const router = express.Router();
 
 const User = require('../models/User');
 const Profile = require('../models/Profile');
-const Project = require('../models/Project');
-
-const jwt = require('jsonwebtoken');
-
 
 const authenticateToken = require('../middlewares/authenticateToken');
 
@@ -78,107 +74,5 @@ router.get('/getProfileAndUser', authenticateToken, async (req, res) => {
         user,
     });
 });
-
-// Route to upgrade a user's subscription
-router.post('/upgrade-subscription', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user.id;
-        const { level, renewalPeriod } = req.body;
-
-        // Validate subscription level and renewal period
-        const validLevels = ['individual', 'enterprise'];
-        if (!validLevels.includes(level)) {
-            return res.status(400).json({ message: 'Invalid subscription level for upgrade.' });
-        }
-        const validPeriods = ['monthly', 'yearly'];
-        if (!validPeriods.includes(renewalPeriod)) {
-            return res.status(400).json({ message: 'Invalid renewal period.' });
-        }
-
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            {
-                'subscription.level': level,
-                'subscription.subscribedAt': new Date(),
-                'subscription.renewalPeriod': renewalPeriod,
-            },
-            { new: true }
-        ).select('-password');
-
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found.' });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: 'Subscription upgraded successfully.',
-            user: updatedUser,
-        });
-    } catch (err) {
-        console.error('Error upgrading subscription:', err);
-        res.status(500).json({ message: 'Failed to upgrade subscription', error: err.message });
-    }
-});
-
-// Route to downgrade a user's subscription to free
-router.post('/downgrade-subscription', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user.id;
-
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            {
-                'subscription.level': 'free',
-                'subscription.subscribedAt': null,
-                'subscription.renewalPeriod': null,
-            },
-            { new: true }
-        ).select('-password');
-
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found.' });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: 'Subscription downgraded to free.',
-            user: updatedUser,
-        });
-    } catch (err) {
-        console.error('Error downgrading subscription:', err);
-        res.status(500).json({ message: 'Failed to downgrade subscription', error: err.message });
-    }
-});
-
-// Route to cancel a subscription (functionally same as downgrading to free)
-router.post('/cancel-subscription', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user.id;
-
-        const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            {
-                'subscription.level': 'free',
-                'subscription.subscribedAt': null,
-                'subscription.renewalPeriod': null,
-            },
-            { new: true }
-        ).select('-password');
-
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found.' });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: 'Subscription cancelled successfully.',
-            user: updatedUser,
-        });
-    } catch (err) {
-        console.error('Error cancelling subscription:', err);
-        res.status(500).json({ message: 'Failed to cancel subscription', error: err.message });
-    }
-});
-
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { UsersIcon } from "@heroicons/react/24/outline";
+import { TeamOutlined } from "@ant-design/icons";
 import { RootState } from "../../../../Redux/store";
 import { Team } from "../../../../Types/Profile";
 
@@ -61,7 +61,7 @@ const TeamsPage: React.FC = () => {
                                 <div>
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center">
-                                            <UsersIcon className="w-6 h-6 text-neutral-500 dark:text-neutral-400" />
+                                            <TeamOutlined className="text-2xl text-neutral-500 dark:text-neutral-400" />
                                         </div>
                                         <div>
                                             <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">{team.name}</h3>
@@ -88,7 +88,7 @@ const TeamsPage: React.FC = () => {
                     className="text-center py-20 px-6 border-2 border-dashed border-neutral-200 dark:border-neutral-800 rounded-lg flex flex-col items-center"
                 >
                     <div className="w-16 h-16 bg-neutral-100 dark:bg-neutral-800/50 rounded-full flex items-center justify-center mb-4">
-                        <UsersIcon className="w-8 h-8 text-neutral-500 dark:text-neutral-400" />
+                        <TeamOutlined className="text-4xl text-neutral-500 dark:text-neutral-400" />
                     </div>
                     <h3 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">No teams yet</h3>
                     <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400 max-w-sm mx-auto">

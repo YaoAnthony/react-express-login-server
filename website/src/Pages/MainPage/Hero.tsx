@@ -74,14 +74,11 @@ const Main = () => {
                         className="flex flex-col gap-2 md:gap-12 items-center justify-center my-2 md:my-5 z-10"
                         >
                         <p className={`${customerStyles.textColor} text-3xl md:text-[4rem] xl:text-[5rem] text-center font-bold font-grotesk`}>
-                            On-Demand Neuro-Symbolic
-                        </p>
-                        <p className={`${customerStyles.textColor} text-3xl md:text-[2.5rem] xl:text-[3rem] 2xl:text-[4rem] text-center font-bold font-grotesk`}>
-                            Test Synthesis
+                            100% Free, <br />
                         </p>
                     </motion.div>
                     <div className={`${customerStyles.secondaryTextColor} text-md text-center `}>
-                        <Typewriter text="Defusing risks before they explode." delay={500} />
+                        <Typewriter text="your ideal helper." delay={500} />
                     </div>
                 </>
             )}
