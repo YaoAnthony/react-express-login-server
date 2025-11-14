@@ -74,11 +74,11 @@ const Main = () => {
                         className="flex flex-col gap-2 md:gap-12 items-center justify-center my-2 md:my-5 z-10"
                         >
                         <p className={`${customerStyles.textColor} text-3xl md:text-[4rem] xl:text-[5rem] text-center font-bold font-grotesk`}>
-                            100% Free, <br />
+                            PDF easy noted / read
                         </p>
                     </motion.div>
                     <div className={`${customerStyles.secondaryTextColor} text-md text-center `}>
-                        <Typewriter text="your ideal helper." delay={500} />
+                        <Typewriter text="your ideal pdf helper." delay={500} />
                     </div>
                 </>
             )}

@@ -3,12 +3,10 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 
 // 示例特性列表（你可以换成 props）
 const features = [
-    "Bug Detection",
-    "All IDE Plugins Access",
-    "Top 10 CWE detection",
-    "Fuzzy Test",
-    "Repair Code",
-    "Generate issue/pull request",
+    "benfit 1",
+    "benfit 2",
+    "benfit 3",
+    "benfit 4",
     "etc..."
 ];
 

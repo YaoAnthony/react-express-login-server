@@ -101,7 +101,7 @@ function verifyRefresh(token) {
  * @param {string} refreshToken - Signed refresh token to store.
  */
 function setRefreshCookie(res, refreshToken) {
-  res.cookie('defuze_refreshToken', refreshToken, {
+  res.cookie('web_refreshToken', refreshToken, {
     httpOnly: true, // Hide the refresh token from client-side scripts
     secure: isProd,  // Require HTTPS in production builds
     sameSite: isProd ? 'none' : 'lax', // Allow cross-site cookies only when needed
@@ -535,7 +535,7 @@ router.post('/get-user-info', authenticateCodeTokenByPost, async (req, res) => {
  */
 router.post('/refresh', (req, res) => {
   try {
-    const refreshToken = req.cookies?.defuze_refreshToken;
+    const refreshToken = req.cookies?.web_refreshToken;
     if (!refreshToken) return jsonError(res, 401, 'No refresh token');
 
     const decoded = verifyRefresh(refreshToken);
@@ -583,7 +583,7 @@ router.post('/renew', authenticateToken, async (req, res) => {
  * access token expiry.
  */
 router.post('/logout', (_req, res) => {
-  res.clearCookie('defuze_refreshToken', {
+  res.clearCookie('web_refreshToken', {
     httpOnly: true,
     secure: isProd,
     sameSite: isProd ? 'none' : 'lax',

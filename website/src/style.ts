@@ -8,15 +8,6 @@ const colors = {
         selectSecondary: "text-white-text-secondary dark:text-dark-text-primary",
         selectSecondaryHover: "hover:text-white-text-primary dark:hover:text-dark-text-primary",
 
-        code: "text-white-text-primary dark:text-[#268bff]",
-        code_string: "text-white-text-primary dark:text-code-string",
-        code_number: "text-white-text-primary dark:text-code-number",
-        code_keyword: "text-white-text-primary dark:text-code-keyword",
-        code_comment: "text-white-text-primary dark:text-code-comment",
-        code_function: "text-white-text-primary dark:text-code-function",
-        code_operator: "text-white-text-primary dark:text-code-operator",
-        code_default: "text-white-text-primary dark:text-code-default",
-
         highlight_purpleBlue: "bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400"
     },
     bg: {
@@ -25,16 +16,7 @@ const colors = {
         tertiary: "bg-white-background-tertiary dark:bg-dark-background-tertiary",
         purpleBlue: "bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/40 dark:to-purple-900/40",
 
-        // githubScan页面的颜色
-        githubScan_primary:"bg-white-background dark:bg-githubScan-dark-primary", //editor bg color
-        githubScan_secondary:"bg-white-background dark:bg-githubScan-dark-secondary", //file explorer
-
-        selectPrimary: "bg-white-text-primary dark:bg-dark-text-primary",
-        
-        codePrimary: "white-code-background-primary dark:dark-code-background-primary",
-        codeSecondary: "white-code-background-secondary dark:dark-code-background-secondary",
-        
-
+       
         transparent: "bg-transparent",
         blurredScroll: "backdrop-blur-md bg-white/50 dark:bg-black/50 shadow-lg",
         glassmorphism: "bg-white/30 dark:bg-black/30",
